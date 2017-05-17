@@ -8,6 +8,7 @@ return [
         'title' => $ll . 'tx_persons_domain_model_person',
         'label' => 'last_name',
         'label_alt' => 'first_name,title',
+        'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -53,8 +54,8 @@ return [
         --palette--;;pPhone,
         --palette--;;pAddress,
         short_biography, biography,
-        --div--;' . $ll . 'tab.additionalFields,' . 'content_elements,
-        --div--;' . $ll . 'tab.additionalImages,' . 'additional_images,
+        --div--;' . $ll . 'tab.additionalFields,content_elements,
+        --div--;' . $ll . 'tab.additionalImages,additional_images,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,  hidden, starttime, endtime'],
     ],
     'columns' => [
@@ -147,8 +148,8 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     ['', \CPSIT\Persons\Domain\Model\Person::GENDER_UNKNOWN],
-                    [ $ll . 'label.gender.male', \CPSIT\Persons\Domain\Model\Person::GENDER_MALE],
-                    [ $ll . 'label.gender.female', \CPSIT\Persons\Domain\Model\Person::GENDER_FEMALE],
+                    [ $ll . 'tx_persons_domain_model_person.gender.male', \CPSIT\Persons\Domain\Model\Person::GENDER_MALE],
+                    [ $ll . 'tx_persons_domain_model_person.gender.female', \CPSIT\Persons\Domain\Model\Person::GENDER_FEMALE],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -249,18 +250,22 @@ return [
             'exclude' => true,
             'label' => $ll . 'tx_persons_domain_model_person.biography',
             'config' => [
-                'type' => 'input',
+                'type' => 'text',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default'
             ],
         ],
         'short_biography' => [
             'exclude' => true,
             'label' => $ll . 'tx_persons_domain_model_person.short_biography',
             'config' => [
-                'type' => 'input',
+                'type' => 'text',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default'
             ],
         ],
         'image' => [
@@ -340,7 +345,7 @@ return [
             'exclude' => true,
             'label' => $ll . 'tx_persons_domain_model_person.additional_images',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
+                'additional_images',
                 [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'

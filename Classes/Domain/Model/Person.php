@@ -135,7 +135,7 @@ class Person extends AbstractEntity
     /**
      * Content elements
      *
-     * @var ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElements>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CPSIT\Persons\Domain\Model\Content>
      * @lazy
      */
     protected $contentElements = null;
@@ -499,7 +499,7 @@ class Person extends AbstractEntity
     /**
      * Returns the content elements
      *
-     * @return ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement>
      */
     public function getContentElements()
     {
@@ -509,7 +509,7 @@ class Person extends AbstractEntity
     /**
      * Sets the content elements
      *
-     * @param ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement> $contentElements
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement> $contentElements
      * @return void
      */
     public function setContentElements(ObjectStorage $contentElements)

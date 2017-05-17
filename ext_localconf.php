@@ -2,12 +2,11 @@
 defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
-    function()
-    {
+    function () {
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
             'CPSIT.Persons',
-            'Person',
+            'Persons',
             [
                 'Person' => 'list, show'
             ],
@@ -17,24 +16,22 @@ call_user_func(
             ]
         );
 
-    // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        'mod {
-            wizards.newContentElement.wizardItems.plugins {
-                elements {
-                    person {
-                        icon = EXT:persons/Resources/Public/Icons/user_plugin_person.svg
-                        title = LLL:EXT:persons/Resources/Private/Language/locallang_db.xlf:tx_persons_domain_model_person
-                        description = LLL:EXT:persons/Resources/Private/Language/locallang_db.xlf:tx_persons_domain_model_person.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = persons_person
-                        }
-                    }
-                }
-                show := addToList(person)
+        if (TYPO3_MODE === 'BE') {
+            $icons = [
+                'ext-persons-wizard-icon' => 'icon-persons.svg',
+            ];
+            $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+            foreach ($icons as $identifier => $path) {
+                $iconRegistry->registerIcon(
+                    $identifier,
+                    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+                    ['source' => 'EXT:persons/Resources/Public/Icons/' . $path]
+                );
             }
-       }'
-    );
+        }
+
+        // wizards
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:persons/Configuration/TSconfig/ContentElementWizard.txt">');
     }
 );
