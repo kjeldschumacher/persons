@@ -13,6 +13,8 @@ namespace CPSIT\Persons\Domain\Model;
  ***/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * Person
  */
@@ -131,6 +133,14 @@ class Person extends AbstractEntity
     protected $status = null;
 
     /**
+     * Content elements
+     *
+     * @var ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElements>
+     * @lazy
+     */
+    protected $contentElements = null;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -146,6 +156,7 @@ class Person extends AbstractEntity
      */
     protected function initStorageObjects()
     {
+        $this->contentElements = new ObjectStorage();
     }
 
     /**
@@ -461,5 +472,48 @@ class Person extends AbstractEntity
     public function setStatus(\TYPO3\CMS\Extbase\Domain\Model\Category $status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * Adds a content element
+     *
+     * @param \CPSIT\Persons\Domain\Model\Content $contentElement
+     * @return void
+     */
+    public function addContentElement(\CPSIT\Persons\Domain\Model\Content $contentElement)
+    {
+        $this->contentElements->attach($contentElement);
+    }
+
+    /**
+     * Removes a content element
+     *
+     * @param \CPSIT\Persons\Domain\Model\Content $contentElementToRemove The content element to be removed
+     * @return void
+     */
+    public function removeContentElement(\CPSIT\Persons\Domain\Model\Content $contentElementToRemove)
+    {
+        $this->contentElements->detach($contentElementToRemove);
+    }
+
+    /**
+     * Returns the content elements
+     *
+     * @return ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement>
+     */
+    public function getContentElements()
+    {
+        return $this->contentElements;
+    }
+
+    /**
+     * Sets the content elements
+     *
+     * @param ObjectStorage<\CPSIT\Persons\Domain\Model\ContentElement> $contentElements
+     * @return void
+     */
+    public function setContentElements(ObjectStorage $contentElements)
+    {
+        $this->contentElements = $contentElements;
     }
 }

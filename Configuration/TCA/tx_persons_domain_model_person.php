@@ -21,14 +21,41 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'global_id,gender,title,first_name,last_name,position,address,zip,city,phone,fax,email,biography,image,departments,course,status',
+        'searchFields' => 'title,first_name,last_name,position,address,zip,city,phone,fax,email,biography,image,additional_images',
         'iconfile' => 'EXT:persons/Resources/Public/Icons/tx_persons_domain_model_person.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email, biography, image, departments, course, status',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email, short_biography, biography, image,status',
+    ],
+    'palettes' => [
+        'pStatus' => [
+            'showitem' => 'status,position'
+        ],
+        'pGender' => [
+            'showitem' => 'gender,birthday,image',
+        ],
+        'pNames' => [
+            'showitem' => 'title,first_name,last_name'
+        ],
+        'pPhone' => [
+            'showitem' => 'phone,fax'
+        ],
+        'pAddress' => [
+            'showitem' => 'zip,city,address'
+        ]
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email, biography, image, departments, course, status, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => [
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource,
+        --palette--;;pStatus, 
+        --palette--;;pGender, 
+        --palette--;;pNames, 
+        --palette--;;pPhone,
+        --palette--;;pAddress,
+        short_biography, biography,
+        --div--;' . $ll . 'tab.additionalFields,' . 'content_elements,
+        --div--;' . $ll . 'tab.additionalImages,' . 'additional_images,
+        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,  hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -112,16 +139,6 @@ return [
                 ],
             ],
         ],
-        'global_id' => [
-            'exclude' => true,
-            'label' => $ll . 'tx_persons_domain_model_person.global_id',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'readOnly' => true
-            ],
-        ],
         'gender' => [
             'exclude' => true,
             'label' => $ll . 'tx_persons_domain_model_person.gender',
@@ -129,8 +146,9 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['-- Label --', 0],
-                    ['-- Label --', 1],
+                    ['', \CPSIT\Persons\Domain\Model\Person::GENDER_UNKNOWN],
+                    [ $ll . 'label.gender.male', \CPSIT\Persons\Domain\Model\Person::GENDER_MALE],
+                    [ $ll . 'label.gender.female', \CPSIT\Persons\Domain\Model\Person::GENDER_FEMALE],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -238,7 +256,7 @@ return [
         ],
         'short_biography' => [
             'exclude' => true,
-            'label' => $ll . 'tx_persons_domain_model_person.biography',
+            'label' => $ll . 'tx_persons_domain_model_person.short_biography',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -291,56 +309,78 @@ return [
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
-        'course' => [
+        'content_elements' => [
             'exclude' => true,
-            'label' => $ll . 'tx_persons_domain_model_person.course',
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => $ll . 'tx_persons_domain_model_person.content_elements',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectTree',
-                'treeConfig' => [
-                    'expandAll' => 1,
-                    'parentField' => 'pid',
-                    'rootUid' => $emConfig->getCourseRootCategoryId(),
-                    'maxLevels' => 1,
-                    'appearance' => [
-                        'showHeader' => true,
-                        'nonSelectableLevels' => 0,
+                'type' => 'inline',
+                'allowed' => 'tt_content',
+                'foreign_table' => 'tt_content',
+                'foreign_sortby' => 'sorting',
+                'foreign_field' => 'tx_persons_related_person',
+                'minitems' => 0,
+                'maxitems' => 99,
+                'appearance' => [
+                    'collapseAll' => true,
+                    'expandSingle' => true,
+                    'levelLinksPosition' => 'bottom',
+                    'useSortable' => true,
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true,
+                    'enabledControls' => [
+                        'info' => false,
                     ]
-                ],
-                'foreign_table' => 'sys_category',
-                'MM' => 'tx_persons_person_category_mm',
-                'size' => 10,
-                'autoSizeMax' => 30,
-                'maxitems' => 9999,
-                'multiple' => 0,
-                'wizards' => [
-                    '_PADDING' => 1,
-                    '_VERTICAL' => 1,
-                    'edit' => [
-                        'module' => [
-                            'name' => 'wizard_edit',
-                        ],
-                        'type' => 'popup',
-                        'title' => 'Edit', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.edit
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                ]
+            ]
+        ],
+        'additional_images' => [
+            'exclude' => true,
+            'label' => $ll . 'tx_persons_domain_model_person.additional_images',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'image',
+                [
+                    'appearance' => [
+                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
                     ],
-                    'add' => [
-                        'module' => [
-                            'name' => 'wizard_add',
+                    'foreign_types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
                         ],
-                        'type' => 'script',
-                        'title' => 'Create new', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.add
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
-                        'params' => [
-                            'table' => 'sys_category',
-                            'pid' => '###CURRENT_PID###',
-                            'setValue' => 'prepend'
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
                         ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ]
                     ],
+                    'maxitems' => 99
                 ],
-            ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            ),
         ],
         'status' => [
             'exclude' => true,
@@ -348,7 +388,12 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
+                'items' => [
+                    ['', 0]
+                ],
+                'default' => '',
                 'foreign_table' => 'sys_category',
+                'foreign_table_where' => 'AND sys_category.parent =' . $emConfig->getStatusRootCategoryId(),
                 'minitems' => 0,
                 'maxitems' => 1,
             ],

@@ -23,7 +23,7 @@ call_user_func(
             wizards.newContentElement.wizardItems.plugins {
                 elements {
                     person {
-                        icon = ' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('persons') . 'Resources/Public/Icons/user_plugin_person.svg
+                        icon = EXT:persons/Resources/Public/Icons/user_plugin_person.svg
                         title = LLL:EXT:persons/Resources/Private/Language/locallang_db.xlf:tx_persons_domain_model_person
                         description = LLL:EXT:persons/Resources/Private/Language/locallang_db.xlf:tx_persons_domain_model_person.description
                         tt_content_defValues {
@@ -32,7 +32,7 @@ call_user_func(
                         }
                     }
                 }
-                show = *
+                show := addToList(person)
             }
        }'
     );

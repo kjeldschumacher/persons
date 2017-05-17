@@ -1,9 +1,12 @@
 <?php
 namespace CPSIT\Persons\Tests\Unit\Domain\Model;
 
+use CPSIT\Persons\Domain\Model\Content;
 use CPSIT\Persons\Domain\Model\Person;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Test case.
@@ -13,14 +16,14 @@ use TYPO3\CMS\Extbase\Domain\Model\Category;
 class PersonTest extends UnitTestCase
 {
     /**
-     * @var \CPSIT\Persons\Domain\Model\Person
+     * @var Person
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \CPSIT\Persons\Domain\Model\Person();
+        $this->subject = new Person();
     }
 
     protected function tearDown()
@@ -392,7 +395,7 @@ class PersonTest extends UnitTestCase
      */
     public function setImageForFileReferenceSetsImage()
     {
-        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $fileReferenceFixture = new FileReference();
         $this->subject->setImage($fileReferenceFixture);
 
         self::assertAttributeEquals(
@@ -418,6 +421,7 @@ class PersonTest extends UnitTestCase
      */
     public function setStatusForCategorySetsStatus()
     {
+        /** @var Category|\PHPUnit_Framework_MockObject_MockObject $mockCategory */
         $mockCategory = $this->getMockBuilder(Category::class)
             ->getMock();
         $this->subject->setStatus($mockCategory);
@@ -425,5 +429,73 @@ class PersonTest extends UnitTestCase
             $mockCategory,
             $this->subject->getStatus()
         );
+    }
+
+    //
+
+    /**
+     * @test
+     */
+    public function getContentElementsReturnsInitialValueForContentElement()
+    {
+        $newObjectStorage = new ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getContentElements()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setContentElementsForObjectStorageContainingContentElementSetsContentElement()
+    {
+        $contentElement = new Content();
+        $objectStorageHoldingExactlyOneContentElement = new ObjectStorage();
+        $objectStorageHoldingExactlyOneContentElement->attach($contentElement);
+        $this->subject->setContentElements($objectStorageHoldingExactlyOneContentElement);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneContentElement,
+            'contentElements',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function addContentElementToObjectStorageHoldingContentElement()
+    {
+        $contentElement = new Content();
+        $contentElementObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $contentElementObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($contentElement));
+        $this->inject($this->subject, 'contentElements', $contentElementObjectStorageMock);
+
+        $this->subject->addContentElement($contentElement);
+    }
+
+    /**
+     * @test
+     */
+    public function removeContentElementFromObjectStorageHoldingContentElement()
+    {
+        $contentElement = new Content();
+        $contentElementObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $contentElementObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($contentElement));
+        $this->inject($this->subject, 'contentElements', $contentElementObjectStorageMock);
+
+        $this->subject->removeContentElement($contentElement);
+
     }
 }

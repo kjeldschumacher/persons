@@ -6,11 +6,14 @@
 			<trans-unit id="tx_persons_domain_model_person">
 				<source>Person</source>
 			</trans-unit>
-			<trans-unit id="tx_persons_domain_model_person.global_id">
-				<source>Global Id</source>
-			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.gender">
 				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.gender.male">
+				<source>Mr</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.gender.female">
+				<source>Ms</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.title">
 				<source>Title</source>
@@ -42,11 +45,17 @@
 			<trans-unit id="tx_persons_domain_model_person.email">
 				<source>Email</source>
 			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.short_biography">
+				<source>Short Biography</source>
+			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.biography">
 				<source>Biography</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.image">
 				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.additional_images">
+				<source>Additional Images</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.departments">
 				<source>Departments</source>

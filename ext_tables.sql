@@ -6,13 +6,12 @@ CREATE TABLE tx_persons_domain_model_person (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	global_id varchar(255) DEFAULT '' NOT NULL,
 	gender int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	first_name varchar(255) DEFAULT '' NOT NULL,
 	last_name varchar(255) DEFAULT '' NOT NULL,
 	position varchar(255) DEFAULT '' NOT NULL,
-	birthday date DEFAULT '1000-01-01',
+	birthday date,
 	address varchar(255) DEFAULT '' NOT NULL,
 	zip varchar(255) DEFAULT '' NOT NULL,
 	city varchar(255) DEFAULT '' NOT NULL,
@@ -21,10 +20,10 @@ CREATE TABLE tx_persons_domain_model_person (
 	email varchar(255) DEFAULT '' NOT NULL,
 	short_biography text DEFAULT '' NOT NULL,
 	biography text DEFAULT '' NOT NULL,
-	image int(11) unsigned NOT NULL default '0',
-	departments int(11) unsigned DEFAULT '0' NOT NULL,
-	course int(11) unsigned DEFAULT '0' NOT NULL,
-	status int(11) unsigned DEFAULT '0',
+	image int(11) unsigned default '0' NOT NULL,
+	content_elements int(11) unsigned default '0' NOT NULL,
+	additional_images int(11) unsigned default '0' NOT NULL,
+	status int(11) unsigned DEFAULT '0' NOT NULL ,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -56,15 +55,10 @@ CREATE TABLE tx_persons_domain_model_person (
 
 );
 
-#
-# Table structure for table 'tx_persons_person_category_mm'
-#
-CREATE TABLE tx_persons_person_category_mm (
-	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 
-	KEY uid_local (uid_local),
-	KEY uid_foreign (uid_foreign)
+#
+# Table structure for table 'tt_content'
+#
+CREATE TABLE tt_content (
+	tx_persons_related_person INT(11) DEFAULT '0' NOT NULL
 );

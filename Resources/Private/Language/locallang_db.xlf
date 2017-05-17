@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-05-15T16:04:56Z" product-name="persons">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-05-15T16:04:56Z"
+		  product-name="persons">
 		<header/>
 		<body>
+			<trans-unit id="tab.additionalFields">
+				<source>Extended</source>
+			</trans-unit>
+			<trans-unit id="tab.additionalImages">
+				<source>Additional Images</source>
+			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person">
 				<source>Person</source>
 			</trans-unit>
-			<trans-unit id="tx_persons_domain_model_person.global_id">
-				<source>Global Id</source>
-			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.gender">
 				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.content_elements">
+				<source>Content Elements</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.gender.male">
+				<source>Mr</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.gender.female">
+				<source>Ms</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.title">
 				<source>Title</source>
@@ -42,11 +55,17 @@
 			<trans-unit id="tx_persons_domain_model_person.email">
 				<source>Email</source>
 			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.short_biography">
+				<source>Short Biography</source>
+			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.biography">
 				<source>Biography</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.image">
 				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.additional_images">
+				<source>Additional Images</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.departments">
 				<source>Departments</source>
