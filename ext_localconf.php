@@ -8,11 +8,11 @@ call_user_func(
             'CPSIT.Persons',
             'Persons',
             [
-                'Person' => 'list, show'
+                'Person' => 'list, show,filter'
             ],
             // non-cacheable actions
             [
-                'Person' => ''
+                'Person' => 'filter'
             ]
         );
 
