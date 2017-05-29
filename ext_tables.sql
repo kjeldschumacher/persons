@@ -12,7 +12,7 @@ CREATE TABLE tx_persons_domain_model_person (
 	last_name varchar(255) DEFAULT '' NOT NULL,
 	position varchar(255) DEFAULT '' NOT NULL,
 	birthday date,
-	address text(255) DEFAULT '' NOT NULL,
+	address text DEFAULT '' NOT NULL,
 	zip varchar(255) DEFAULT '' NOT NULL,
 	city varchar(255) DEFAULT '' NOT NULL,
 	phone varchar(255) DEFAULT '' NOT NULL,
