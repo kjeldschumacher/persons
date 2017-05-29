@@ -1,5 +1,7 @@
 <?php
 
+$ll = 'LLL:EXT:persons/Resources/Private/Language/locallang_db.xlf:';
+
 $emConfig = \CPSIT\Persons\Utility\EmConfigurationUtility::getConfiguration();
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
@@ -7,7 +9,7 @@ $emConfig = \CPSIT\Persons\Utility\EmConfigurationUtility::getConfiguration();
     'tx_persons_domain_model_person',
     'status',
     [
-        'label' => $ll . 'tx_persons_domain_model_person.departments',
+        'label' => $ll . 'tx_persons_domain_model_person.status',
         'exclude' => true,
         'fieldConfiguration' => [
             'treeConfig' => [
