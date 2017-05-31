@@ -23,7 +23,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,first_name,last_name,position,address,zip,city,phone,fax,email,biography,image,additional_images',
-        'iconfile' => 'EXT:persons/Resources/Public/Icons/tx_persons_domain_model_person.gif'
+        'iconfile' => 'EXT:persons/Resources/Public/Icons/tx_persons_domain_model_person.svg'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email, short_biography, biography, image,status',
