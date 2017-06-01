@@ -18,6 +18,7 @@ CREATE TABLE tx_persons_domain_model_person (
 	phone varchar(255) DEFAULT '' NOT NULL,
 	fax varchar(255) DEFAULT '' NOT NULL,
 	email varchar(255) DEFAULT '' NOT NULL,
+	www varchar(255) DEFAULT '' NOT NULL,
 	short_biography text DEFAULT '' NOT NULL,
 	biography text DEFAULT '' NOT NULL,
 	image int(11) unsigned default '0' NOT NULL,

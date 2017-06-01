@@ -22,11 +22,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,first_name,last_name,position,address,zip,city,phone,fax,email,biography,image,additional_images',
+        'searchFields' => 'title,first_name,last_name,position,address,zip,city,phone,fax,email,www,biography,image,additional_images',
         'iconfile' => 'EXT:persons/Resources/Public/Icons/tx_persons_domain_model_person.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email, short_biography, biography, image,status',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, global_id, gender, title, first_name, last_name, position, address, zip, city, phone, fax, email,www,short_biography, biography, image,status',
     ],
     'palettes' => [
         'pStatus' => [
@@ -41,6 +41,9 @@ return [
         'pPhone' => [
             'showitem' => 'phone,fax'
         ],
+        'pWeb' => [
+            'showitem' => 'email,www'
+        ],
         'pAddress' => [
             'showitem' => 'zip,city,address'
         ]
@@ -52,6 +55,7 @@ return [
         --palette--;;pGender, 
         --palette--;;pNames, 
         --palette--;;pPhone,
+        --palette--;;pWeb,
         --palette--;;pAddress,
         short_biography, biography,
         --div--;' . $ll . 'tab.additionalFields,content_elements,
@@ -240,6 +244,15 @@ return [
         'email' => [
             'exclude' => true,
             'label' => $ll . 'tx_persons_domain_model_person.email',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'www' => [
+            'exclude' => 0,
+            'label' => $ll . 'tx_persons_domain_model_person.www',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

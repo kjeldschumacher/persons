@@ -55,6 +55,9 @@
 			<trans-unit id="tx_persons_domain_model_person.email">
 				<source>Email</source>
 			</trans-unit>
+			<trans-unit id="tx_persons_domain_model_person.www">
+				<source>WWW</source>
+			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.short_biography">
 				<source>Short Biography</source>
 			</trans-unit>
