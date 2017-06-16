@@ -49,5 +49,4 @@ class EmConfigurationTest extends UnitTestCase
             $this->subject->getStatusRootCategoryId()
         );
     }
-
 }

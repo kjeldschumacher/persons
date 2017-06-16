@@ -63,7 +63,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getTitle()
         );
-
     }
 
     /**
@@ -78,7 +77,6 @@ class PersonTest extends UnitTestCase
             'title',
             $this->subject
         );
-
     }
 
     /**
@@ -90,7 +88,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getFirstName()
         );
-
     }
 
     /**
@@ -105,7 +102,6 @@ class PersonTest extends UnitTestCase
             'firstName',
             $this->subject
         );
-
     }
 
     /**
@@ -117,7 +113,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getLastName()
         );
-
     }
 
     /**
@@ -132,7 +127,6 @@ class PersonTest extends UnitTestCase
             'lastName',
             $this->subject
         );
-
     }
 
     /**
@@ -144,7 +138,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getPosition()
         );
-
     }
 
     /**
@@ -159,7 +152,6 @@ class PersonTest extends UnitTestCase
             'position',
             $this->subject
         );
-
     }
 
     /**
@@ -171,7 +163,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getAddress()
         );
-
     }
 
     /**
@@ -186,7 +177,6 @@ class PersonTest extends UnitTestCase
             'address',
             $this->subject
         );
-
     }
 
     /**
@@ -198,7 +188,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getZip()
         );
-
     }
 
     /**
@@ -213,7 +202,6 @@ class PersonTest extends UnitTestCase
             'zip',
             $this->subject
         );
-
     }
 
     /**
@@ -225,7 +213,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getCity()
         );
-
     }
 
     /**
@@ -240,7 +227,6 @@ class PersonTest extends UnitTestCase
             'city',
             $this->subject
         );
-
     }
 
     /**
@@ -252,7 +238,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getPhone()
         );
-
     }
 
     /**
@@ -267,7 +252,6 @@ class PersonTest extends UnitTestCase
             'phone',
             $this->subject
         );
-
     }
 
     /**
@@ -279,7 +263,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getFax()
         );
-
     }
 
     /**
@@ -294,7 +277,6 @@ class PersonTest extends UnitTestCase
             'fax',
             $this->subject
         );
-
     }
 
     /**
@@ -306,7 +288,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getEmail()
         );
-
     }
 
     /**
@@ -321,7 +302,6 @@ class PersonTest extends UnitTestCase
             'email',
             $this->subject
         );
-
     }
 
     /**
@@ -333,7 +313,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getBiography()
         );
-
     }
 
     /**
@@ -348,7 +327,6 @@ class PersonTest extends UnitTestCase
             'biography',
             $this->subject
         );
-
     }
 
     /**
@@ -360,7 +338,6 @@ class PersonTest extends UnitTestCase
             '',
             $this->subject->getShortBiography()
         );
-
     }
 
     /**
@@ -375,7 +352,6 @@ class PersonTest extends UnitTestCase
             'shortBiography',
             $this->subject
         );
-
     }
 
     /**
@@ -387,7 +363,6 @@ class PersonTest extends UnitTestCase
             null,
             $this->subject->getImage()
         );
-
     }
 
     /**
@@ -403,7 +378,6 @@ class PersonTest extends UnitTestCase
             'image',
             $this->subject
         );
-
     }
 
     /**
@@ -443,7 +417,6 @@ class PersonTest extends UnitTestCase
             $newObjectStorage,
             $this->subject->getContentElements()
         );
-
     }
 
     /**
@@ -461,7 +434,6 @@ class PersonTest extends UnitTestCase
             'contentElements',
             $this->subject
         );
-
     }
 
     /**
@@ -496,6 +468,5 @@ class PersonTest extends UnitTestCase
         $this->inject($this->subject, 'contentElements', $contentElementObjectStorageMock);
 
         $this->subject->removeContentElement($contentElement);
-
     }
 }

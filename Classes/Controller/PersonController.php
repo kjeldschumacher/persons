@@ -46,4 +46,14 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     {
         $this->view->assign('person', $person);
     }
+
+    /**
+     * Action show selected
+     * Displays one ore more persons selected in plugin
+     */
+    public function showSelectedAction()
+    {
+        $persons = $this->personRepository->findMultipleByUid($this->settings['selectedPersons']);
+        $this->view->assign('persons', $persons);
+    }
 }

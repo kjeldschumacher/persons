@@ -3,7 +3,6 @@
 
 namespace CPSIT\Persons\Domain\Model\Dto;
 
-
 class EmConfiguration
 {
 

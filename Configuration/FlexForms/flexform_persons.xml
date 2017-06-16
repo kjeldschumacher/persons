@@ -33,6 +33,12 @@
                                         </numIndex>
                                         <numIndex index="1">Person->show</numIndex>
                                     </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">
+                                            LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.mode.personShowSelected
+                                        </numIndex>
+                                        <numIndex index="1">Person->showSelected</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
@@ -44,19 +50,27 @@
                             </label>
                             <displayCond>
                                 <AND>
-                                    <numIndex index="0">FIELD:sDEF.switchableControllerActions:!=:Person->filter</numIndex>
-                                    <numIndex index="1">FIELD:sDEF.switchableControllerActions:!=:Person->show</numIndex>
+                                    <numIndex index="0">FIELD:sDEF.switchableControllerActions:!=:Person->filter
+                                    </numIndex>
+                                    <numIndex index="1">FIELD:sDEF.switchableControllerActions:!=:Person->show
+                                    </numIndex>
+                                    <numIndex index="2">FIELD:sDEF.switchableControllerActions:!=:Person->showSelected
+                                    </numIndex>
                                 </AND>
                             </displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.lastNameAsc</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.lastNameAsc
+                                        </numIndex>
                                         <numIndex index="1">lastName|asc</numIndex>
                                     </numIndex>
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.empty</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.empty
+                                        </numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                 </items>
@@ -69,15 +83,7 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.maxItems
                             </label>
-                            <displayCond>
-                                <AND>
-                                    <numIndex index="0">FIELD:sDEF.switchableControllerActions:!=:Event->quickMenu
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        FIELD:sDEF.switchableControllerActions:!=:Performance->quickMenu
-                                    </numIndex>
-                                </AND>
-                            </displayCond>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>input</type>
                                 <size>3</size>
@@ -89,6 +95,7 @@
                     <view.pluginNamespace>
                         <TCEforms>
                             <label>Plugin Namespace</label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>input</type>
                                 <eval>trim,nospace</eval>
@@ -115,6 +122,7 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.conjunction
                             </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>select</type>
                                 <items>
@@ -136,18 +144,21 @@
                     </settings.categoryConjunction>
                     <settings.categories>
                         <TCEforms>
-                            <label>LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.categories</label>
+                            <label>
+                                LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.categories
+                            </label>
                             <exclude>1</exclude>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>select</type>
-                                <autoSizeMax>50</autoSizeMax>
+                                <autoSizeMax>10</autoSizeMax>
                                 <foreign_table>sys_category</foreign_table>
                                 <foreign_table_where>AND sys_category.sys_language_uid IN (-1, 0) ORDER BY
                                     sys_category.sorting ASC
                                 </foreign_table_where>
                                 <maxitems>9999</maxitems>
                                 <renderMode>tree</renderMode>
-                                <size>10</size>
+                                <size>3</size>
                                 <treeConfig>
                                     <appearance>
                                         <expandAll>1</expandAll>
@@ -158,6 +169,25 @@
                             </config>
                         </TCEforms>
                     </settings.categories>
+                    <settings.selectedPersons>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.selectedPersons
+                            </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->showSelected</displayCond>
+                            <exclude>1</exclude>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_persons_domain_model_person</allowed>
+                                <wizards>
+                                    <suggest>
+                                        <type>suggest</type>
+                                    </suggest>
+                                </wizards>
+                            </config>
+                        </TCEforms>
+                    </settings.selectedPersons>
                 </el>
             </ROOT>
         </constraints>
@@ -176,6 +206,7 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.listPage
                             </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -195,6 +226,7 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.detailPage
                             </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -214,6 +246,7 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.backPage
                             </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
