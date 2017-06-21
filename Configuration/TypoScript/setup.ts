@@ -1,15 +1,15 @@
 
-plugin.tx_persons_person {
+plugin.tx_persons {
     view {
         templateRootPaths.0 = EXT:persons/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_persons_person.view.templateRootPath}
+        templateRootPaths.1 = {$plugin.tx_persons.view.templateRootPath}
         partialRootPaths.0 = EXT:persons/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_persons_person.view.partialRootPath}
+        partialRootPaths.1 = {$plugin.tx_persons.view.partialRootPath}
         layoutRootPaths.0 = EXT:persons/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_persons_person.view.layoutRootPath}
+        layoutRootPaths.1 = {$plugin.tx_persons.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_persons_person.persistence.storagePid}
+        storagePid = {$plugin.tx_persons.persistence.storagePid}
         #recursive = 1
     }
     features {
