@@ -28,6 +28,7 @@ Represents a person.
 | biography           | Biography         | string        | text        | Rich Text Editor               |
 | additionalPictures  | Additional Images | ObjectStorage | int(11)     | Multiple file references       |
 | contentElements     | Content Elements  | ObjectStorage | int(11)     | Multiple content elements      |
+| departments         | Departments       | ObjectStorage | int(11)     | Multiple sys categories        |
 
 **Legend**
 * *Category*  `\TYPO3\CMS\Extbase\Domain\Model\Category`
@@ -40,3 +41,6 @@ Represents a person.
 Available options can be narrowed down by setting a `statusRootCategoryId` in Extension Manager. 
 Thus only (direct) children of this category can be selected in the backend form for persons.
 
+The property *departments* is implemented as reference to multiple system categories. 
+Available options can be narrowed down by setting a `departmentsRootCategoryId` in Extension Manager. 
+Thus only (direct) children of this category can be selected in the backend form for persons.

@@ -139,6 +139,13 @@ class Person extends AbstractEntity
      * @lazy
      */
     protected $contentElements = null;
+    /**
+     * departments
+     *
+     * @var ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @lazy
+     */
+    protected $departments = null;
 
     /**
      * __construct
@@ -157,6 +164,7 @@ class Person extends AbstractEntity
     protected function initStorageObjects()
     {
         $this->contentElements = new ObjectStorage();
+        $this->departments = new ObjectStorage();
     }
 
     /**
@@ -515,5 +523,48 @@ class Person extends AbstractEntity
     public function setContentElements(ObjectStorage $contentElements)
     {
         $this->contentElements = $contentElements;
+    }
+
+    /**
+     * Adds a Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $departments
+     * @return void
+     */
+    public function addDepartment(\TYPO3\CMS\Extbase\Domain\Model\Category $department)
+    {
+        $this->departments->attach($department);
+    }
+
+    /**
+     * Removes a Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $departmentToRemove The Category to be removed
+     * @return void
+     */
+    public function removeDepartment(\TYPO3\CMS\Extbase\Domain\Model\Category $departmentToRemove)
+    {
+        $this->departments->detach($departmentToRemove);
+    }
+
+    /**
+     * Returns the departments
+     *
+     * @return ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
+     */
+    public function getDepartments()
+    {
+        return $this->departments;
+    }
+
+    /**
+     * Sets the departments
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
+     * @return void
+     */
+    public function setDepartments(ObjectStorage $departments)
+    {
+        $this->departments = $departments;
     }
 }

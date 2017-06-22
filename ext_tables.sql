@@ -25,6 +25,7 @@ CREATE TABLE tx_persons_domain_model_person (
 	content_elements int(11) unsigned default '0' NOT NULL,
 	additional_images int(11) unsigned default '0' NOT NULL,
 	status int(11) unsigned DEFAULT '0' NOT NULL ,
+	departments int(11) UNSIGNED DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

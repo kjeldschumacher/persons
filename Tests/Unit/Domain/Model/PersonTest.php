@@ -469,4 +469,67 @@ class PersonTest extends UnitTestCase
 
         $this->subject->removeContentElement($contentElement);
     }
+
+    /**
+     * @test
+     */
+    public function getDepartmentsReturnsInitialValueForCategory()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getDepartments()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setDepartmentsForObjectStorageContainingCategorySetsDepartments()
+    {
+        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
+        $objectStorageHoldingExactlyOneDepartment = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneDepartment->attach($department);
+        $this->subject->setDepartments($objectStorageHoldingExactlyOneDepartment);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneDepartment,
+            'departments',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addDepartmentToObjectStorageHoldingDepartments()
+    {
+        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
+        $departmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $departmentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($department));
+        $this->inject($this->subject, 'departments', $departmentsObjectStorageMock);
+
+        $this->subject->addDepartment($department);
+    }
+
+    /**
+     * @test
+     */
+    public function removeDepartmentFromObjectStorageHoldingDepartments()
+    {
+        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
+        $departmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $departmentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($department));
+        $this->inject($this->subject, 'departments', $departmentsObjectStorageMock);
+
+        $this->subject->removeDepartment($department);
+    }
 }

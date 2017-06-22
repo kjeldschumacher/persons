@@ -49,4 +49,29 @@ class EmConfigurationTest extends UnitTestCase
             $this->subject->getStatusRootCategoryId()
         );
     }
+
+    /**
+     * @test
+     */
+    public function getDepartmentRootCategoryInitiallyReturnsZero()
+    {
+        $this->assertSame(
+            0,
+            $this->subject->getDepartmentRootCategoryId()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function departmentRootCategoryCanBeSet()
+    {
+        $category = 15;
+        $this->subject->setDepartmentRootCategoryId($category);
+
+        $this->assertSame(
+            $category,
+            $this->subject->getDepartmentRootCategoryId()
+        );
+    }
 }

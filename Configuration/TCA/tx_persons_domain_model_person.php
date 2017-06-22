@@ -58,7 +58,7 @@ return [
         --palette--;;pWeb,
         --palette--;;pAddress,
         short_biography, biography,
-        --div--;' . $ll . 'tab.additionalFields,content_elements,
+        --div--;' . $ll . 'tab.additionalFields,content_elements,departments
         --div--;' . $ll . 'tab.additionalImages,additional_images,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,  hidden, starttime, endtime'],
     ],

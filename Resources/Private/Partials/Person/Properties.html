@@ -122,6 +122,16 @@
     </tr>
     <tr>
         <td>
+            <f:translate key="tx_persons_domain_model_person.departments"/>
+        </td>
+        <td>
+            <f:for each="{person.departments}" as="department">
+                {department.title}
+            </f:for>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <f:translate key="tx_persons_domain_model_person.image"/>
         </td>
         <td>
