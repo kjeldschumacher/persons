@@ -142,7 +142,7 @@ class Person extends AbstractEntity
     /**
      * departments
      *
-     * @var ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @lazy
      */
     protected $departments = null;
@@ -550,7 +550,7 @@ class Person extends AbstractEntity
     /**
      * Returns the departments
      *
-     * @return ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
      */
     public function getDepartments()
     {
