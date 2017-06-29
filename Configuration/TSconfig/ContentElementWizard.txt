@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+	elements {
+		persons {
+			iconIdentifier = ext-persons-wizard-icon
+			title = LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:plugin.persons.title
+			description = LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:plugin.persons.description
+			tt_content_defValues {
+				CType = list
+				list_type = persons_persons
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+
+# ==============================================
+# Persistence object mapping configuration
+# ==============================================
+config.tx_extbase.persistence.classes {
+    CPSIT\Persons\Domain\Model\Content {
+        mapping {
+            tableName = tt_content
+            columns {
+                altText.mapOnProperty = altText
+                titleText.mapOnProperty = titleText
+                colPos.mapOnProperty = colPos
+                CType.mapOnProperty = CType
+            }
+        }
+    }
+}
