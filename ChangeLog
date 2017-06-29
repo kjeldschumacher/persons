@@ -1,0 +1,17 @@
+2017-06-29         [RELEASE] Release of persons 0.1.0 (Dirk Wenzel)
+2017-06-29 631ee5c [BUGFIX] fixed error in composer.json which caused failing builds (Dirk Wenzel)
+2017-06-22 7cccd20 [BUGFIX] invalid annotation in domain model Person fixed. (Dirk Wenzel)
+2017-06-22 9ec26f1 [TASK] domain model Person extended by field departments. (Dirk Wenzel)
+2017-06-21 22ec2cd [BUGFIX] TypoScript path corrected (Dirk Wenzel)
+2017-06-16 6c44e6f [TASK] PersonRepository extended by methods findMultipleByUid and createOrderingsFromList. PersonController extended by showSelectedAction. Plugin can now display selected persons. (Dirk Wenzel)
+2017-06-01 1cc6f6e [TASK] field www added to person model (Dirk Wenzel)
+2017-05-31 eb5e81c [TASK] icons for extension, plugin and model added. (Dirk Wenzel)
+2017-05-29 8fafe15 [BUGFIX] missing label added to table configuration (Dirk Wenzel)
+2017-05-29 17042a0 [TASK] fixed error caused by invalid SQL statement. (Dirk Wenzel)
+2017-05-29 11ec46a [BUGFIX] invalid configuration fixed: field department replaced by field status (Dirk Wenzel)
+2017-05-22 025176f [TASK] Documentation added. SQL definition improved. (Dirk Wenzel)
+2017-05-17 9a5fd23 [TASK] Plugin configured, default templates edited. (Dirk Wenzel)
+2017-05-17 5e34127 [TASK] Domain/Model/Content implemented. Person extended by field contentElements. Code cleanup. (Dirk Wenzel)
+2017-05-16 0052460 [TASK] Basic extension configuration added. Person, PersonController, EmConfiguration, EmConfigurationUtility implemented. (Dirk Wenzel)
+
+
