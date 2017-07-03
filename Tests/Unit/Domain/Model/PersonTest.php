@@ -207,6 +207,31 @@ class PersonTest extends UnitTestCase
     /**
      * @test
      */
+    public function getWwwReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getWww()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setWwwForStringSetsWww()
+    {
+        $this->subject->setWww('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'www',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getCityReturnsInitialValueForString()
     {
         self::assertSame(

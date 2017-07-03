@@ -148,6 +148,13 @@ class Person extends AbstractEntity
     protected $departments = null;
 
     /**
+     * WWW
+     *
+     * @var string
+     */
+    protected $www = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -566,5 +573,25 @@ class Person extends AbstractEntity
     public function setDepartments(ObjectStorage $departments)
     {
         $this->departments = $departments;
+    }
+
+    /**
+     * Returns www
+     *
+     * @return string
+     */
+    public function getWww()
+    {
+        return $this->www;
+    }
+
+    /**
+     * Sets www
+     *
+     * @param string $www
+     */
+    public function setWww($www)
+    {
+        $this->www = $www;
     }
 }
