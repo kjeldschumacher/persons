@@ -19,10 +19,10 @@ namespace CPSIT\Persons\View\Person;
 use CPSIT\Persons\View\AbstractJsonView;
 
 /**
- * Class ShowJson
- * Json view for show action of PersonController
+ * Class ShowSelectedJson
+ * Json view for showSelected action of PersonController
  */
-class ShowJson extends AbstractJsonView
+class ShowSelectedJson extends AbstractJsonView
 {
     /**
      * Only variables whose name is contained in this array will be rendered
@@ -38,15 +38,22 @@ class ShowJson extends AbstractJsonView
      * @var array
      */
     protected $configuration = [
-        'person' => [
-            '_exclude' => ['pid'],
-            '_descend' => [
-                'image' => [
-                    '_descend' => [
-                        '_only' => [
-                            'publicUrl',
-                            'title',
-                            'alternative'
+        'persons' => [
+            '_descendAll' => [
+                '_exclude' => ['pid'],
+                '_descend' => [
+                    'person' => [
+                        '_exclude' => ['pid'],
+                        '_descend' => [
+                            'image' => [
+                                '_descend' => [
+                                    '_only' => [
+                                        'publicUrl',
+                                        'title',
+                                        'alternative'
+                                    ]
+                                ]
+                            ]
                         ]
                     ]
                 ]

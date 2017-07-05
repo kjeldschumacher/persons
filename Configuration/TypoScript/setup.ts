@@ -24,8 +24,8 @@ plugin.tx_persons {
     }
 }
 
-personJson = PAGE
-personJson {
+lib.tx_person.person = PAGE
+lib.tx_person.person {
     typeNum = 1498743904
     headerData >
     config {
@@ -43,12 +43,6 @@ personJson {
         vendorName = CPSIT
         pluginName = Persons
         controller = Person
-        action = show
-        switchableControllerActions {
-            Person {
-                1 = show
-            }
-        }
     }
 }
 
