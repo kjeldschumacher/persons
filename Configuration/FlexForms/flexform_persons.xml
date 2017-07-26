@@ -39,6 +39,12 @@
                                         </numIndex>
                                         <numIndex index="1">Person->showSelected</numIndex>
                                     </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">
+                                            LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.mode.personFilter
+                                        </numIndex>
+                                        <numIndex index="1">Person->filter</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
@@ -188,6 +194,43 @@
                             </config>
                         </TCEforms>
                     </settings.selectedPersons>
+                    <settings.selected.departments>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.selected.departments
+                            </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->filter</displayCond>
+                            <config>
+                                <type>select</type>
+                                <autoSizeMax>30</autoSizeMax>
+                                <foreign_table>sys_category</foreign_table>
+                                <foreign_table_where>AND sys_category.sys_language_uid IN (-1, 0) ORDER BY
+                                    sys_category.sorting ASC
+                                </foreign_table_where>
+                                <maxitems>9999</maxitems>
+                                <renderMode>tree</renderMode>
+                                <size>10</size>
+                                <treeConfig>
+                                    <appearance>
+                                        <expandAll>1</expandAll>
+                                        <showHeader>1</showHeader>
+                                    </appearance>
+                                    <parentField>parent</parentField>
+                                </treeConfig>
+                            </config>
+                        </TCEforms>
+                    </settings.selected.departments>
+                    <settings.visible.departments>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.visible.departments
+                            </label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->filter</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.visible.departments>
                 </el>
             </ROOT>
         </constraints>

@@ -7,7 +7,7 @@ call_user_func(
             'CPSIT.Persons',
             'Persons',
             [
-                'Person' => 'list, show, showSelected'
+                'Person' => 'list, show, showSelected,filter'
             ],
             // non-cacheable actions
             [

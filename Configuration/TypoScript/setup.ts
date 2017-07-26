@@ -22,10 +22,17 @@ plugin.tx_persons {
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
     }
+    settings {
+        filter {
+            selected {
+                departments = 1
+            }
+        }
+    }
 }
 
-lib.tx_person.person = PAGE
-lib.tx_person.person {
+personPage = PAGE
+personPage {
     typeNum = 1498743904
     headerData >
     config {
@@ -44,6 +51,7 @@ lib.tx_person.person {
         pluginName = Persons
         controller = Person
     }
+    settings < plugin.tx_persons.settings
 }
 
 plugin.tx_persons._CSS_DEFAULT_STYLE (

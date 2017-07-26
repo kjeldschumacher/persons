@@ -1,4 +1,5 @@
 <?php
+
 namespace CPSIT\Persons\Controller;
 
 /***
@@ -55,5 +56,20 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     {
         $persons = $this->personRepository->findMultipleByUid($this->settings['selectedPersons']);
         $this->view->assign('persons', $persons);
+    }
+
+    /**
+     * Action filter
+     * Display filter for list view
+     */
+    public function filterAction()
+    {
+        $options = [
+            'selected' => $this->settings['selected'],
+            'visible' => $this->settings['visible']
+        ];
+        $this->view->assign(
+            'options', $options
+        );
     }
 }
