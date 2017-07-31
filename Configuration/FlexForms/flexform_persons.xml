@@ -101,7 +101,6 @@
                     <view.pluginNamespace>
                         <TCEforms>
                             <label>Plugin Namespace</label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>input</type>
                                 <eval>trim,nospace</eval>
