@@ -8,16 +8,19 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Test case.
- *
- * @author Dirk Wenzel <wenzel@cps-it.de>
+ * Class PersonControllerTest
  */
 class PersonControllerTest extends UnitTestCase
 {
     /**
-     * @var \CPSIT\Persons\Controller\PersonController
+     * @var \CPSIT\Persons\Controller\PersonController|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $subject = null;
+
+    /**
+     * @var ViewInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $view;
 
     protected function setUp()
     {
@@ -26,11 +29,9 @@ class PersonControllerTest extends UnitTestCase
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
+        $this->view = $this->getMockBuilder(ViewInterface::class)
+            ->setMethods(['assign'])->getMockForAbstractClass();
+        $this->inject($this->subject, 'view', $this->view);
     }
 
     /**
@@ -49,9 +50,8 @@ class PersonControllerTest extends UnitTestCase
         $personRepository->expects(self::once())->method('findAll')->will(self::returnValue($allPersons));
         $this->inject($this->subject, 'personRepository', $personRepository);
 
-        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
-        $view->expects(self::once())->method('assign')->with('persons', $allPersons);
-        $this->inject($this->subject, 'view', $view);
+        $this->view->expects(self::once())->method('assign')
+            ->with('persons', $allPersons);
 
         $this->subject->listAction();
     }
@@ -62,10 +62,7 @@ class PersonControllerTest extends UnitTestCase
     public function showActionAssignsTheGivenPersonToView()
     {
         $person = new Person();
-
-        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
-        $this->inject($this->subject, 'view', $view);
-        $view->expects(self::once())->method('assign')->with('person', $person);
+        $this->view->expects(self::once())->method('assign')->with('person', $person);
 
         $this->subject->showAction($person);
     }
@@ -97,13 +94,36 @@ class PersonControllerTest extends UnitTestCase
 
         $this->inject($this->subject, 'personRepository', $personRepository);
 
-        $view = $this->getMockBuilder(ViewInterface::class)->getMock();
-        $view->expects($this->once())
+        $this->view->expects($this->once())
             ->method('assign')
             ->with('persons', $persons);
 
-        $this->inject($this->subject, 'view', $view);
-
         $this->subject->showSelectedAction();
+    }
+
+    /**
+     * @test
+     */
+    public function filterActionAssignsOptions(){
+        $settings = [
+            'selected' => 'foo',
+            'visible' => 'bar'
+        ];
+
+        $this->inject(
+            $this->subject,
+            'settings',
+            $settings
+        );
+
+        $expectedOptions = [
+            'selected' => $settings['selected'],
+            'visible' => $settings['visible']
+        ];
+        $this->view->expects($this->once())
+            ->method('assign')
+            ->with('options', $expectedOptions);
+
+        $this->subject->filterAction();
     }
 }
