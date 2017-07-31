@@ -18,6 +18,7 @@ namespace CPSIT\Persons\View;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Mvc\View\JsonView;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 /**
@@ -40,6 +41,10 @@ class AbstractJsonView extends JsonView
         if ($object instanceof LazyLoadingProxy) {
             /** @var FileReference $object */
             $object = $object->_loadRealInstance();
+        }
+
+        if ($object instanceof ObjectStorage) {
+            $object = $object->toArray();
         }
 
         $transformedObject = parent::transformObject($object, $configuration);
