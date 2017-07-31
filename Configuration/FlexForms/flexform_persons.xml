@@ -249,7 +249,6 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.listPage
                             </label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -269,7 +268,6 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.detailPage
                             </label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -289,7 +287,6 @@
                             <label>
                                 LLL:EXT:persons/Resources/Private/Language/locallang_be.xlf:flexforms_general.backPage
                             </label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:=:Person->list;Person->show</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
