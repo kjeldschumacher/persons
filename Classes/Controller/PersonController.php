@@ -64,12 +64,14 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function filterAction()
     {
-        $options = [
-            'selected' => $this->settings['selected'],
-            'visible' => $this->settings['visible']
+        $configuration = [
+            'options' => [
+                'selected' => $this->settings['selected'],
+                'visible' => $this->settings['visible']
+            ]
         ];
         $this->view->assign(
-            'options', $options
+            'configuration', $configuration
         );
     }
 }

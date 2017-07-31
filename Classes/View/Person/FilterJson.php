@@ -29,7 +29,7 @@ class FilterJson extends AbstractJsonView
      *
      * @var array
      */
-    protected $variablesToRender = ['options'];
+    protected $variablesToRender = ['configuration'];
 
     /**
      * The rendering configuration for this JSON view which
@@ -38,7 +38,7 @@ class FilterJson extends AbstractJsonView
      * @var array
      */
     protected $configuration = [
-        'options' => [
+        'configuration' => [
             '_descendAll' => [
             ]
         ]
