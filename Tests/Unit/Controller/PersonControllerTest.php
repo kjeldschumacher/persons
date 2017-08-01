@@ -1,4 +1,5 @@
 <?php
+
 namespace CPSIT\Persons\Tests\Unit\Controller;
 
 use CPSIT\Persons\Domain\Model\Person;
@@ -70,7 +71,8 @@ class PersonControllerTest extends UnitTestCase
     /**
      * @test
      */
-    public function showSelectedActionFetchesRecordListAndAssignsResultToView(){
+    public function showSelectedActionFetchesRecordListAndAssignsResultToView()
+    {
         $settings = [
             'selectedPersons' => '5,3,1'
         ];
@@ -104,7 +106,8 @@ class PersonControllerTest extends UnitTestCase
     /**
      * @test
      */
-    public function filterActionAssignsOptions(){
+    public function filterActionAssignsOptions()
+    {
         $settings = [
             'selected' => 'foo',
             'visible' => 'bar'
@@ -117,12 +120,14 @@ class PersonControllerTest extends UnitTestCase
         );
 
         $expectedOptions = [
-            'selected' => $settings['selected'],
-            'visible' => $settings['visible']
+            'options' => [
+                'selected' => $settings['selected'],
+                'visible' => $settings['visible']
+            ]
         ];
         $this->view->expects($this->once())
             ->method('assign')
-            ->with('options', $expectedOptions);
+            ->with('configuration', $expectedOptions);
 
         $this->subject->filterAction();
     }

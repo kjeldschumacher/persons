@@ -370,12 +370,12 @@ class PersonTest extends UnitTestCase
      */
     public function setShortBiographyForStringSetsShortBiography()
     {
-        $this->subject->setShortBiography('Conceived at T3CON10');
+        $value = 'foo';
+        $this->subject->setShortBiography($value);
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'shortBiography',
-            $this->subject
+        self::assertSame(
+            $value,
+            $this->subject->getShortBiography()
         );
     }
 

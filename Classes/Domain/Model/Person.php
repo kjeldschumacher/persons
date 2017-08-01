@@ -433,7 +433,7 @@ class Person extends AbstractEntity
      */
     public function getShortBiography()
     {
-        return $this->biography;
+        return $this->shortBiography;
     }
 
     /**
