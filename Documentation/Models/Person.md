@@ -7,7 +7,6 @@ Represents a person.
 | name                | label             | type          | db type     | description                    | 
 | ------------------- | ----------------- | ------------- |  ---------- | ------------------------------ |
 | uid                 | uid               | integer       | int(11)     | autoincrement, unique id       |  
-| status              | Status            | Category      | int(11)     | single system category         |
 | position            | Position          | string        | varchar:255 |                                |
 | firstName           | First Name        | string        | varchar:255 |                                |
 | lastName            | Last Name         | string        | varchar:255 |                                |
@@ -28,7 +27,7 @@ Represents a person.
 | biography           | Biography         | string        | text        | Rich Text Editor               |
 | additionalPictures  | Additional Images | ObjectStorage | int(11)     | Multiple file references       |
 | contentElements     | Content Elements  | ObjectStorage | int(11)     | Multiple content elements      |
-| departments         | Departments       | ObjectStorage | int(11)     | Multiple sys categories        |
+| categories          | Categories        | ObjectStorage | int(11)     | Multiple sys categories        |
 
 **Legend**
 * *Category*  `\TYPO3\CMS\Extbase\Domain\Model\Category`
@@ -37,10 +36,7 @@ Represents a person.
 * *ObjectStorage* `\TYPO3\CMS\Extbase\Persistence\ObjectStorage`
 * *Content* `\CPSIT\Persons\Domain\Model\Content`
 
-**Note**: The property *status* is implemented as reference to a single system category. 
-Available options can be narrowed down by setting a `statusRootCategoryId` in Extension Manager. 
-Thus only (direct) children of this category can be selected in the backend form for persons.
-
-The property *departments* is implemented as reference to multiple system categories. 
-Available options can be narrowed down by setting a `departmentsRootCategoryId` in Extension Manager. 
-Thus only (direct) children of this category can be selected in the backend form for persons.
+**Note**: 
+The property *categories* is implemented as reference to multiple system categories. 
+Available options can be narrowed down by setting a `rootUid` in TCA. 
+Thus only children of this category can be selected in the backend form for persons.

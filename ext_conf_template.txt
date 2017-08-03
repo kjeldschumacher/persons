@@ -1,5 +1,0 @@
-# cat=basic/enable; type=integer; label=Department Root Category ID: ID of root category for departments
-departmentRootCategoryId = 0
-
-# cat=basic/enable; type=integer; label=Status Root Category ID: ID of root category for statuses
-statusRootCategoryId = 0

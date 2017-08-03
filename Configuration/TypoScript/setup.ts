@@ -25,7 +25,7 @@ plugin.tx_persons {
     settings {
         filter {
             selected {
-                departments = 1
+                categories = 1
             }
         }
     }

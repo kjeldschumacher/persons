@@ -55,7 +55,7 @@ class ListJson extends AbstractJsonView
                             ]
                         ]
                     ],
-                    'departments' => [
+                    'categories' => [
                         '_exclude' => ['pid'],
                     ]
                 ]

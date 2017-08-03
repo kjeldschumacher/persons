@@ -60,8 +60,8 @@
 			<trans-unit id="tx_persons_domain_model_person.additional_images">
 				<source>Additional Images</source>
 			</trans-unit>
-			<trans-unit id="tx_persons_domain_model_person.departments">
-				<source>Departments</source>
+			<trans-unit id="tx_persons_domain_model_person.categories">
+				<source>Categories</source>
 			</trans-unit>
 			<trans-unit id="tx_persons_domain_model_person.course">
 				<source>Course</source>

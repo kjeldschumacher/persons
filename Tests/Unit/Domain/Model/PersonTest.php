@@ -408,33 +408,6 @@ class PersonTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStatusReturnsInitialValueForCategory()
-    {
-        $this->assertNull(
-            $this->subject->getStatus()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStatusForCategorySetsStatus()
-    {
-        /** @var Category|\PHPUnit_Framework_MockObject_MockObject $mockCategory */
-        $mockCategory = $this->getMockBuilder(Category::class)
-            ->getMock();
-        $this->subject->setStatus($mockCategory);
-        $this->assertSame(
-            $mockCategory,
-            $this->subject->getStatus()
-        );
-    }
-
-    //
-
-    /**
-     * @test
-     */
     public function getContentElementsReturnsInitialValueForContentElement()
     {
         $newObjectStorage = new ObjectStorage();
@@ -498,28 +471,28 @@ class PersonTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDepartmentsReturnsInitialValueForCategory()
+    public function getCategoriesReturnsInitialValueForCategory()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getDepartments()
+            $this->subject->getCategories()
         );
     }
 
     /**
      * @test
      */
-    public function setDepartmentsForObjectStorageContainingCategorySetsDepartments()
+    public function setCategoriesForObjectStorageContainingCategorySetsCategories()
     {
-        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
-        $objectStorageHoldingExactlyOneDepartment = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneDepartment->attach($department);
-        $this->subject->setDepartments($objectStorageHoldingExactlyOneDepartment);
+        $category = new Category();
+        $objectStorageHoldingExactlyOneCategory = new ObjectStorage();
+        $objectStorageHoldingExactlyOneCategory->attach($category);
+        $this->subject->setCategories($objectStorageHoldingExactlyOneCategory);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneDepartment,
-            'departments',
+            $objectStorageHoldingExactlyOneCategory,
+            'categories',
             $this->subject
         );
     }
@@ -527,34 +500,34 @@ class PersonTest extends UnitTestCase
     /**
      * @test
      */
-    public function addDepartmentToObjectStorageHoldingDepartments()
+    public function addCategoryToObjectStorageHoldingCategories()
     {
-        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
-        $departmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $category = new Category();
+        $categoriesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $departmentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($department));
-        $this->inject($this->subject, 'departments', $departmentsObjectStorageMock);
+        $categoriesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'categories', $categoriesObjectStorageMock);
 
-        $this->subject->addDepartment($department);
+        $this->subject->addCategory($category);
     }
 
     /**
      * @test
      */
-    public function removeDepartmentFromObjectStorageHoldingDepartments()
+    public function removeCategoryFromObjectStorageHoldingCategories()
     {
-        $department = new \TYPO3\CMS\Extbase\Domain\Model\Category();
-        $departmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $category = new Category();
+        $categoriesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $departmentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($department));
-        $this->inject($this->subject, 'departments', $departmentsObjectStorageMock);
+        $categoriesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'categories', $categoriesObjectStorageMock);
 
-        $this->subject->removeDepartment($department);
+        $this->subject->removeCategory($category);
     }
 }
