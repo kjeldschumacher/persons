@@ -39,7 +39,6 @@ class AbstractJsonView extends JsonView
     protected function transformObject($object, array $configuration)
     {
         if ($object instanceof LazyLoadingProxy) {
-            /** @var FileReference $object */
             $object = $object->_loadRealInstance();
         }
 
@@ -56,6 +55,30 @@ class AbstractJsonView extends JsonView
         }
 
         return $transformedObject;
+    }
+
+    /**
+     * Transforms a value depending on type recursively using the
+     * supplied configuration.
+     *
+     * @param mixed $value The value to transform
+     * @param array $configuration Configuration for transforming the value
+     * @return array The transformed value
+     */
+    protected function transformValue($value, array $configuration)
+    {
+        if (!$value instanceof ObjectStorage) {
+            return parent::transformValue($value, $configuration);
+        }
+
+        $items = $value->toArray();
+
+        $value = [];
+        foreach ($items as $item) {
+            $value[] = parent::transformValue($item, $configuration);
+        }
+
+        return $value;
     }
 
     /**
