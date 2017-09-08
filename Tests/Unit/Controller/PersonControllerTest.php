@@ -2,6 +2,7 @@
 
 namespace CPSIT\Persons\Tests\Unit\Controller;
 
+use CPSIT\Persons\Controller\PersonController;
 use CPSIT\Persons\Domain\Model\Person;
 use CPSIT\Persons\Domain\Repository\PersonRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -27,11 +28,11 @@ class PersonControllerTest extends UnitTestCase
     {
         parent::setUp();
         $this->subject = $this->getMockBuilder(\CPSIT\Persons\Controller\PersonController::class)
-            ->setMethods(['redirect', 'forward', 'addFlashMessage'])
+            ->setMethods(['redirect', 'forward', 'addFlashMessage', 'emitSignal'])
             ->disableOriginalConstructor()
             ->getMock();
         $this->view = $this->getMockBuilder(ViewInterface::class)
-            ->setMethods(['assign'])->getMockForAbstractClass();
+            ->setMethods(['assign', 'assignMultiple'])->getMockForAbstractClass();
         $this->inject($this->subject, 'view', $this->view);
     }
 
@@ -109,7 +110,7 @@ class PersonControllerTest extends UnitTestCase
     public function filterActionAssignsOptions()
     {
         $settings = [
-            'selected' => 'foo',
+            'categories' => 'foo',
             'visible' => 'bar'
         ];
 
@@ -119,15 +120,22 @@ class PersonControllerTest extends UnitTestCase
             $settings
         );
 
-        $expectedOptions = [
-            'options' => [
-                'selected' => $settings['selected'],
-                'visible' => $settings['visible']
-            ]
-        ];
         $this->view->expects($this->once())
-            ->method('assign')
-            ->with('configuration', $expectedOptions);
+            ->method('assignMultiple');
+
+        $this->subject->filterAction();
+    }
+
+    /**
+     * @test
+     */
+    public function filterActionEmitsSignalBeforeAssignVariables() {
+        $expectedClass = PersonController::class;
+        $expectedSignal = PersonController::SIGNAL_FILTER_ACTION_BEFORE_ASSIGN;
+
+        $this->subject->expects($this->once())
+            ->method('emitSignal')
+            ->with($expectedClass, $expectedSignal);
 
         $this->subject->filterAction();
     }

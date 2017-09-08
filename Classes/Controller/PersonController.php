@@ -18,13 +18,9 @@ namespace CPSIT\Persons\Controller;
  */
 class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-    /**
-     * personRepository
-     *
-     * @var \CPSIT\Persons\Domain\Repository\PersonRepository
-     * @inject
-     */
-    protected $personRepository = null;
+    use PersonRepositoryTrait, SignalTrait;
+
+    const SIGNAL_FILTER_ACTION_BEFORE_ASSIGN = 'filterBeforeAssign';
 
     /**
      * action list
@@ -64,14 +60,17 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function filterAction()
     {
-        $configuration = [
-            'options' => [
-                'selected' => $this->settings['selected'],
-                'visible' => $this->settings['visible']
-            ]
+        $templateVariables = [
+            'categories' => $this->settings['categories'],
+            'visible' => $this->settings['visible'],
+            'settings' => $this->settings
         ];
-        $this->view->assign(
-            'configuration', $configuration
+
+        $this->emitSignal(
+            __CLASS__,
+            static::SIGNAL_FILTER_ACTION_BEFORE_ASSIGN,
+            $templateVariables
         );
+        $this->view->assignMultiple($templateVariables);
     }
 }

@@ -22,13 +22,6 @@ plugin.tx_persons {
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
     }
-    settings {
-        filter {
-            selected {
-                categories = 1
-            }
-        }
-    }
 }
 
 personPage = PAGE
