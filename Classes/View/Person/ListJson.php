@@ -59,7 +59,16 @@ class ListJson extends AbstractJsonView
                     'categories' => [
                         '_only' => [
                             'title',
-                            'uid'
+                            'uid',
+                            'parent'
+                        ],
+                        '_descend' => [
+                            'parent' => [
+                                '_only' => [
+                                    'uid',
+                                    'title'
+                                ],
+                            ]
                         ]
                     ]
                 ]
