@@ -8,6 +8,7 @@ use CPSIT\Persons\Domain\Repository\PersonRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
 
 /**
  * Class PersonControllerTest
@@ -24,6 +25,11 @@ class PersonControllerTest extends UnitTestCase
      */
     protected $view;
 
+    /**
+     * @var PersonRepository|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $personRepository;
+
     protected function setUp()
     {
         parent::setUp();
@@ -34,6 +40,12 @@ class PersonControllerTest extends UnitTestCase
         $this->view = $this->getMockBuilder(ViewInterface::class)
             ->setMethods(['assign', 'assignMultiple'])->getMockForAbstractClass();
         $this->inject($this->subject, 'view', $this->view);
+        $this->personRepository = $this->getMockBuilder(PersonRepository::class)
+            ->setMethods(['findAll'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->subject->injectPersonRepository($this->personRepository);
     }
 
     /**
@@ -45,15 +57,11 @@ class PersonControllerTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $personRepository = $this->getMockBuilder(PersonRepository::class)
-            ->setMethods(['findAll'])
-            ->disableOriginalConstructor()
-            ->getMock();
-        $personRepository->expects(self::once())->method('findAll')->will(self::returnValue($allPersons));
-        $this->inject($this->subject, 'personRepository', $personRepository);
+        $this->personRepository->expects($this->once())
+            ->method('findAll')
+            ->will($this->returnValue($allPersons));
 
-        $this->view->expects(self::once())->method('assign')
-            ->with('persons', $allPersons);
+        $this->view->expects(self::once())->method('assignMultiple');
 
         $this->subject->listAction();
     }
@@ -138,5 +146,19 @@ class PersonControllerTest extends UnitTestCase
             ->with($expectedClass, $expectedSignal);
 
         $this->subject->filterAction();
+    }
+
+    /**
+     * @test
+     */
+    public function listActionEmitsSignalBeforeAssignVariables() {
+        $expectedClass = PersonController::class;
+        $expectedSignal = PersonController::SIGNAL_LIST_ACTION_BEFORE_ASSIGN;
+
+        $this->subject->expects($this->once())
+            ->method('emitSignal')
+            ->with($expectedClass, $expectedSignal);
+
+        $this->subject->listAction();
     }
 }

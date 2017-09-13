@@ -21,6 +21,7 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     use PersonRepositoryTrait, SignalTrait;
 
     const SIGNAL_FILTER_ACTION_BEFORE_ASSIGN = 'filterBeforeAssign';
+    const SIGNAL_LIST_ACTION_BEFORE_ASSIGN = 'listBeforeAssign';
 
     /**
      * action list
@@ -30,7 +31,17 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function listAction()
     {
         $persons = $this->personRepository->findAll();
-        $this->view->assign('persons', $persons);
+
+        $templateVariables = [
+            'persons' => $persons,
+            'settings' => $this->settings
+        ];
+        $this->emitSignal(
+            __CLASS__,
+            static::SIGNAL_LIST_ACTION_BEFORE_ASSIGN,
+            $templateVariables
+        );
+        $this->view->assignMultiple($templateVariables);
     }
 
     /**
