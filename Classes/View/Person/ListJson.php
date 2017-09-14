@@ -42,20 +42,6 @@ class ListJson extends AbstractJsonView
             '_descendAll' => [
                 '_exclude' => ['pid'],
                 '_descend' => [
-                    'person' => [
-                        '_descend' => [
-                            'image' => [
-                                '_descend' => [
-                                    '_only' => [
-                                        'publicUrl',
-                                        'title',
-                                        'alternative'
-                                    ]
-                                ]
-                            ],
-
-                        ]
-                    ],
                     'categories' => [
                         '_only' => [
                             'title',
@@ -70,7 +56,16 @@ class ListJson extends AbstractJsonView
                                 ],
                             ]
                         ]
-                    ]
+                    ],
+                    'image' => [
+                        '_descend' => [
+                            '_only' => [
+                                'publicUrl',
+                                'title',
+                                'alternative'
+                            ]
+                        ]
+                    ],
                 ]
             ]
         ]
