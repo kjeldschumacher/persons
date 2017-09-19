@@ -40,22 +40,8 @@ class ListJson extends AbstractJsonView
     protected $configuration = [
         'persons' => [
             '_descendAll' => [
-                '_exclude' => ['pid', 'uid'],
+                '_exclude' => ['pid'],
                 '_descend' => [
-                    'person' => [
-                        '_descend' => [
-                            'image' => [
-                                '_descend' => [
-                                    '_only' => [
-                                        'publicUrl',
-                                        'title',
-                                        'alternative'
-                                    ]
-                                ]
-                            ],
-
-                        ]
-                    ],
                     'categories' => [
                         '_only' => [
                             'title',
@@ -70,7 +56,16 @@ class ListJson extends AbstractJsonView
                                 ],
                             ]
                         ]
-                    ]
+                    ],
+                    'image' => [
+                        '_descend' => [
+                            '_only' => [
+                                'publicUrl',
+                                'title',
+                                'alternative'
+                            ]
+                        ]
+                    ],
                 ]
             ]
         ]
