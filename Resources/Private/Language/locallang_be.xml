@@ -21,13 +21,15 @@
       <label index="flexforms_general.maxHighlighted">Highlights count</label>
       <label index="flexforms_general.maxItems">Items count (max)</label>
       <label index="flexforms_general.mode">What to display</label>
-      <label index="flexforms_general.mode.event_calendar">Calendar</label>
+      <label index="flexforms_general.mode.personFilter">Filter</label>
       <label index="flexforms_general.mode.personListShow">List/Detail</label>
       <label index="flexforms_general.mode.personShow">Detail</label>
       <label index="flexforms_general.mode.personShowSelected">Show Selected</label>
       <label index="flexforms_general.pages">Pages</label>
       <label index="flexforms_general.categories">Categories</label>
       <label index="flexforms_general.selectedPersons">Selected Persons</label>
+      <label index="flexforms_general.selected.categories">Selected Departements</label>
+      <label index="flexforms_general.visible.categories">Categories Visible</label>
       <label index="flexforms_general.order">sort by</label>
       <label index="flexforms_general.start">Start</label>
       <label index="flexforms_general.lastNameAsc">Last Name (ascending)</label>

@@ -125,14 +125,6 @@ class Person extends AbstractEntity
     protected $image = null;
 
     /**
-     * status
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\Category
-     * @lazy
-     */
-    protected $status = null;
-
-    /**
      * Content elements
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CPSIT\Persons\Domain\Model\Content>
@@ -140,12 +132,19 @@ class Person extends AbstractEntity
      */
     protected $contentElements = null;
     /**
-     * departments
+     * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @lazy
      */
-    protected $departments = null;
+    protected $categories = null;
+
+    /**
+     * WWW
+     *
+     * @var string
+     */
+    protected $www = '';
 
     /**
      * __construct
@@ -164,7 +163,7 @@ class Person extends AbstractEntity
     protected function initStorageObjects()
     {
         $this->contentElements = new ObjectStorage();
-        $this->departments = new ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
     /**
@@ -426,7 +425,7 @@ class Person extends AbstractEntity
      */
     public function getShortBiography()
     {
-        return $this->biography;
+        return $this->shortBiography;
     }
 
     /**
@@ -459,27 +458,6 @@ class Person extends AbstractEntity
     public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
     {
         $this->image = $image;
-    }
-
-    /**
-     * Returns the status
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\Category $status
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Sets the status
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $status
-     * @return void
-     */
-    public function setStatus(\TYPO3\CMS\Extbase\Domain\Model\Category $status)
-    {
-        $this->status = $status;
     }
 
     /**
@@ -528,43 +506,63 @@ class Person extends AbstractEntity
     /**
      * Adds a Category
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $departments
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      * @return void
      */
-    public function addDepartment(\TYPO3\CMS\Extbase\Domain\Model\Category $department)
+    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
     {
-        $this->departments->attach($department);
+        $this->categories->attach($category);
     }
 
     /**
      * Removes a Category
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $departmentToRemove The Category to be removed
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category The Category to be removed
      * @return void
      */
-    public function removeDepartment(\TYPO3\CMS\Extbase\Domain\Model\Category $departmentToRemove)
+    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
     {
-        $this->departments->detach($departmentToRemove);
+        $this->categories->detach($category);
     }
 
     /**
-     * Returns the departments
+     * Returns the categories
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
      */
-    public function getDepartments()
+    public function getCategories()
     {
-        return $this->departments;
+        return $this->categories;
     }
 
     /**
-     * Sets the departments
+     * Sets the categories
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $departments
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
      * @return void
      */
-    public function setDepartments(ObjectStorage $departments)
+    public function setCategories(ObjectStorage $categories)
     {
-        $this->departments = $departments;
+        $this->categories = $categories;
+    }
+
+    /**
+     * Returns www
+     *
+     * @return string
+     */
+    public function getWww()
+    {
+        return $this->www;
+    }
+
+    /**
+     * Sets www
+     *
+     * @param string $www
+     */
+    public function setWww($www)
+    {
+        $this->www = $www;
     }
 }

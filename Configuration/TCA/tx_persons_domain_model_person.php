@@ -58,7 +58,7 @@ return [
         --palette--;;pWeb,
         --palette--;;pAddress,
         short_biography, biography,
-        --div--;' . $ll . 'tab.additionalFields,content_elements,departments
+        --div--;' . $ll . 'tab.additionalFields,content_elements,categories,
         --div--;' . $ll . 'tab.additionalImages,additional_images,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,  hidden, starttime, endtime'],
     ],
@@ -399,22 +399,6 @@ return [
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
-        ],
-        'status' => [
-            'exclude' => true,
-            'label' => $ll . 'tx_persons_domain_model_person.status',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['', 0]
-                ],
-                'default' => '',
-                'foreign_table' => 'sys_category',
-                'foreign_table_where' => 'AND sys_category.parent =' . $emConfig->getStatusRootCategoryId(),
-                'minitems' => 0,
-                'maxitems' => 1,
-            ],
         ],
 
     ],

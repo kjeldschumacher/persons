@@ -1,4 +1,5 @@
 <?php
+
 namespace CPSIT\Persons\Controller;
 
 /***
@@ -17,13 +18,10 @@ namespace CPSIT\Persons\Controller;
  */
 class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-    /**
-     * personRepository
-     *
-     * @var \CPSIT\Persons\Domain\Repository\PersonRepository
-     * @inject
-     */
-    protected $personRepository = null;
+    use PersonRepositoryTrait, SignalTrait;
+
+    const SIGNAL_FILTER_ACTION_BEFORE_ASSIGN = 'filterBeforeAssign';
+    const SIGNAL_LIST_ACTION_BEFORE_ASSIGN = 'listBeforeAssign';
 
     /**
      * action list
@@ -33,7 +31,17 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function listAction()
     {
         $persons = $this->personRepository->findAll();
-        $this->view->assign('persons', $persons);
+
+        $templateVariables = [
+            'persons' => $persons,
+            'settings' => $this->settings
+        ];
+        $this->emitSignal(
+            __CLASS__,
+            static::SIGNAL_LIST_ACTION_BEFORE_ASSIGN,
+            $templateVariables
+        );
+        $this->view->assignMultiple($templateVariables);
     }
 
     /**
@@ -55,5 +63,25 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     {
         $persons = $this->personRepository->findMultipleByUid($this->settings['selectedPersons']);
         $this->view->assign('persons', $persons);
+    }
+
+    /**
+     * Action filter
+     * Display filter for list view
+     */
+    public function filterAction()
+    {
+        $templateVariables = [
+            'categories' => $this->settings['categories'],
+            'visible' => $this->settings['visible'],
+            'settings' => $this->settings
+        ];
+
+        $this->emitSignal(
+            __CLASS__,
+            static::SIGNAL_FILTER_ACTION_BEFORE_ASSIGN,
+            $templateVariables
+        );
+        $this->view->assignMultiple($templateVariables);
     }
 }

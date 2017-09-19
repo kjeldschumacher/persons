@@ -24,6 +24,29 @@ plugin.tx_persons {
     }
 }
 
+personPage = PAGE
+personPage {
+    typeNum = 1498743904
+    headerData >
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+    }
+
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Persons
+        vendorName = CPSIT
+        pluginName = Persons
+        controller = Person
+    }
+    settings < plugin.tx_persons.settings
+}
+
 plugin.tx_persons._CSS_DEFAULT_STYLE (
         textarea.f3-form-error {
                 background-color:#FF9F9F;

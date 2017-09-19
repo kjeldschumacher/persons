@@ -45,8 +45,8 @@
 			<trans-unit id="image.description">
 				<source>image</source>
 			</trans-unit>
-			<trans-unit id="departments.description">
-				<source>departments</source>
+			<trans-unit id="categories.description">
+				<source>categories</source>
 			</trans-unit>
 			<trans-unit id="course.description">
 				<source>course</source>
