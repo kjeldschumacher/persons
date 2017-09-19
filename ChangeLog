@@ -1,3 +1,21 @@
+2017-09-19         [RELEASE] Release of persons 0.2.0 (Dirk Wenzel)
+2017-09-14 f0d1178 [BUGFIX] fixed error in configuration of json list view which prevented image field from rendering (Dirk Wenzel)
+2017-09-14 6a6e2a6 [BUGFIX] View ListJson now renders missing field uid too. (Dirk Wenzel)
+2017-09-13 fd34dd2 [TASK] PersonController->listAction now emits a signal before assigning variables to view too. (Dirk Wenzel)
+2017-09-08 8d05a6a [TASK] Json view for person listing extended: now category parent is displayed too. (Dirk Wenzel)
+2017-09-08 1218770 [TASK] PersonRepositoryTrait and SignalTrait implemented. PersonController refactored and extended: filterAction now sends signal before assigning variables to view. (Dirk Wenzel)
+2017-08-23 cfa2cb0 [TASK] Json View now transforms object storages too. View ListJson renders categories. (Dirk Wenzel)
+2017-08-03 03c8f8b [TASK] model Person edited: field status removed, departments replaced by categories (Dirk Wenzel)
+2017-08-01 c8d4301 [BUGFIX] fix error in Person model where getter return wrong property. Failing unit test for PersonController fixed. (Dirk Wenzel)
+2017-07-31 d6e76e7 [TASK] plugin now displays field pluginNamespace for each action (Dirk Wenzel)
+2017-07-31 4d96828 [TASK] show pages configuration for all actions of person plugin (Dirk Wenzel)
+2017-07-31 330337f [TASK] Variable assignment of filter action in PersonController changed. Json view configuration adapted. (Dirk Wenzel)
+2017-07-31 46944e0 [TASK] Json view now transforms ObjectStorage objects to array (Dirk Wenzel)
+2017-07-26 1ef7388 [TASK] Filter action for PersonController implemented (Dirk Wenzel)
+2017-07-05 3b01902 [TASK] AbstractJsonView, Person/ListJson and Person/ShowSelectedJson of PersonController implemented. (Dirk Wenzel)
+2017-07-04 322b083 [TASK] JsonView implemented (WIP) (Dirk Wenzel)
+2017-07-03 49fa06e [TASK] missing property www added to Person. (Dirk Wenzel)
+
 2017-06-29         [RELEASE] Release of persons 0.1.0 (Dirk Wenzel)
 2017-06-29 631ee5c [BUGFIX] fixed error in composer.json which caused failing builds (Dirk Wenzel)
 2017-06-22 7cccd20 [BUGFIX] invalid annotation in domain model Person fixed. (Dirk Wenzel)
@@ -13,5 +31,3 @@
 2017-05-17 9a5fd23 [TASK] Plugin configured, default templates edited. (Dirk Wenzel)
 2017-05-17 5e34127 [TASK] Domain/Model/Content implemented. Person extended by field contentElements. Code cleanup. (Dirk Wenzel)
 2017-05-16 0052460 [TASK] Basic extension configuration added. Person, PersonController, EmConfiguration, EmConfigurationUtility implemented. (Dirk Wenzel)
-
-
