@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2017-05-15T16:04:56Z" product-name="persons">
+        <header/>
+        <body>
+            <trans-unit id="tab.additionalFields">
+                <source>Extended</source>
+                <target>Erweitert</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.image">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tab.additionalImages">
+                <source>Additional Images</source>
+                <target>Weitere Bilder</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person">
+                <source>Person</source>
+                <target>Person</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.gender">
+                <source>Gender</source>
+                <target>Anrede</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.content_elements">
+                <source>Content Elements</source>
+                <target>Inhaltselemente</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.gender.male">
+                <source>Mr</source>
+                <target>Herr</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.gender.female">
+                <source>Ms</source>
+                <target>Frau</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.first_name">
+                <source>First Name</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.last_name">
+                <source>Last Name</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.position">
+                <source>Position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.address">
+                <source>Address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.zip">
+                <source>Zip</source>
+                <target>PLZ</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.city">
+                <source>City</source>
+                <target>Stadt</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.phone">
+                <source>Phone</source>
+                <target>Telefon</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.fax">
+                <source>Fax</source>
+                <target>Fax</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.email">
+                <source>Email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.www">
+                <source>WWW</source>
+                <target>Web</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.short_biography">
+                <source>Short Biography</source>
+                <target>Kurzbiographie</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.biography">
+                <source>Biography</source>
+                <target>Biographie</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.categories">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_persons_domain_model_person.status">
+                <source>Status</source>
+                <target>Status</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
