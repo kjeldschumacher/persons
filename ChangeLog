@@ -1,3 +1,6 @@
+2017-09-19         [RELEASE] Release of persons 0.3.0 (Dirk Wenzel)
+2017-09-19 d8a8945 [TASK] german localization for backend added. (Dirk Wenzel)
+
 2017-09-19         [RELEASE] Release of persons 0.2.0 (Dirk Wenzel)
 2017-09-14 f0d1178 [BUGFIX] fixed error in configuration of json list view which prevented image field from rendering (Dirk Wenzel)
 2017-09-14 6a6e2a6 [BUGFIX] View ListJson now renders missing field uid too. (Dirk Wenzel)
