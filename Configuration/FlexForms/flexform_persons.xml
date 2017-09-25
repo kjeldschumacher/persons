@@ -100,7 +100,8 @@
 
                     <view.pluginNamespace>
                         <TCEforms>
-                            <label>Plugin Namespace</label>
+                            <label>
+                                LLL:EXT:persons/Resources/Private/Language/locallang_be.xml:flexforms_general.pluginNamespace</label>
                             <config>
                                 <type>input</type>
                                 <eval>trim,nospace</eval>

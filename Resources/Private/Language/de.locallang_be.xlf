@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="">
+		<header>
+			<description>Language labels for backend of extension persons</description>
+			<type>database</type>
+			<generator>LFEditor</generator>
+			<authorName>Dirk Wenzel</authorName>
+			<authorEmail>wenzel@cps-it.de</authorEmail>
+		</header>
+		<body>
+		<trans-unit id="flexforms_general.ascending" approved="yes">
+			<source>ascending</source>
+			<target>aufsteigend</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.backPage" approved="yes">
+			<source>Back Page</source>
+			<target>&quot;Zurück&quot;-Seite</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.cache.makeNonCacheable" approved="yes">
+			<source>Don't cache plugin contents</source>
+			<target>Plugin-Inhalt nicht cachen</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.categories" approved="yes">
+			<source>Categories</source>
+			<target>Kategorien</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.conjunction" approved="yes">
+			<source>Conjunction</source>
+			<target>Verknüpfung</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.conjunction.and" approved="yes">
+			<source>And</source>
+			<target>UND</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.conjunction.or" approved="yes">
+			<source>Or</source>
+			<target>ODER</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.constraintBy" approved="yes">
+			<source>constraint by</source>
+			<target>eingeschränkt nach</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.constraints" approved="yes">
+			<source>Constraints</source>
+			<target>Einschränkungen</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.descending" approved="yes">
+			<source>descending</source>
+			<target>absteigend</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.detailPage" approved="yes">
+			<source>Detail Page</source>
+			<target>Detailseite</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.lastNameAsc" approved="yes">
+			<source>Last Name (ascending)</source>
+			<target>Nachname (aufsteigend)</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.listPage" approved="yes">
+			<source>List Page</source>
+			<target>Listenseite</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.maxItems" approved="yes">
+			<source>Items count (max)</source>
+			<target>Anzahl (höchstens)</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.mode" approved="yes">
+			<source>What to display</source>
+			<target>Was soll angezeigt werden</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.mode.personFilter" approved="yes">
+			<source>Filter</source>
+			<target>Filter</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.mode.personListShow" approved="yes">
+			<source>List/Detail</source>
+			<target>Liste/Detail</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.mode.personShow" approved="yes">
+			<source>Detail</source>
+			<target>Detail</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.mode.personShowSelected" approved="yes">
+			<source>Selected Persons</source>
+			<target>ausgewählte Personen</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.order" approved="yes">
+			<source>sort by</source>
+			<target>sortiert nach</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.pages" approved="yes">
+			<source>Pages</source>
+			<target>Seiten</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.pluginNamespace" approved="yes">
+			<source>Plugin Namespace</source>
+			<target>Plugin Namensraum</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.selected.categories" approved="yes">
+			<source>Selected Departements</source>
+			<target>Ausgewählte Abteilungen</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.selectedPersons" approved="yes">
+			<source>Selected Persons</source>
+			<target>Ausgewählte Personen</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.start" approved="yes">
+			<source>Start</source>
+			<target>Start</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.title" approved="yes">
+			<source>Title</source>
+			<target>Titel</target>
+		</trans-unit>
+		<trans-unit id="flexforms_general.visible.categories" approved="yes">
+			<source>Categories Visible</source>
+			<target>zeige Kategorien</target>
+		</trans-unit>
+		<trans-unit id="flexforms_tab.settings" approved="yes">
+			<source>Settings</source>
+			<target>Einstellungen</target>
+		</trans-unit>
+		<trans-unit id="plugin.persons.description" approved="yes">
+			<source>Displays persons.</source>
+			<target>Zeigt Personen</target>
+		</trans-unit>
+		<trans-unit id="plugin.persons.title" approved="yes">
+			<source>Persons</source>
+			<target>Personen</target>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>
