@@ -38,6 +38,8 @@ class AbstractJsonView extends JsonView
      */
     protected function transformObject($object, array $configuration)
     {
+        $transformedObject = [];
+
         if ($object instanceof LazyLoadingProxy) {
             $object = $object->_loadRealInstance();
         }
@@ -46,7 +48,9 @@ class AbstractJsonView extends JsonView
             $object = $object->toArray();
         }
 
-        $transformedObject = parent::transformObject($object, $configuration);
+        if (is_object($object)) {
+            $transformedObject = parent::transformObject($object, $configuration);
+        }
         if (
             $object instanceof FileReference
             && isset($configuration['_descend']['_only'])
