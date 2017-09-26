@@ -30,6 +30,7 @@ class PersonRepository extends Repository
     {
 
         $query = $this->createQuery();
+        $query->setQuerySettings($query->getQuerySettings()->setRespectSysLanguage(false));
         $ids = GeneralUtility::intExplode(',', $recordList, true);
         if ((bool)$ids) {
             $query->matching($query->in('uid', $ids));

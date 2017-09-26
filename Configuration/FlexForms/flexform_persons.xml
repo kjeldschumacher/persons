@@ -196,6 +196,16 @@
                                 <type>group</type>
                                 <internal_type>db</internal_type>
                                 <allowed>tx_persons_domain_model_person</allowed>
+                                <fieldControl>
+                                    <elementBrowser>
+                                        <disabled>1</disabled>
+                                    </elementBrowser>
+                                </fieldControl>
+                                <suggestOptions>
+                                    <tx_persons_domain_model_person>
+                                        <searchCondition>sys_language_uid IN (0, -1)</searchCondition>
+                                    </tx_persons_domain_model_person>
+                                </suggestOptions>
                                 <wizards>
                                     <suggest>
                                         <type>suggest</type>
