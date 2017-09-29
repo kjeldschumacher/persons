@@ -28,10 +28,10 @@ class PersonRepository extends Repository
      */
     public function findMultipleByUid($recordList, $order = null)
     {
-
         $query = $this->createQuery();
+        $query->setQuerySettings($query->getQuerySettings()->setRespectSysLanguage(false));
         $ids = GeneralUtility::intExplode(',', $recordList, true);
-        if ((bool)$ids) {
+        if (!empty($ids)) {
             $query->matching($query->in('uid', $ids));
 
             if ( null !== $order) {

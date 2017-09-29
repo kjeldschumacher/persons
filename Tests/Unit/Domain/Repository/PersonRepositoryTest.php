@@ -16,6 +16,7 @@ namespace CPSIT\Persons\Tests\Unit\Domain\Repository;
 use CPSIT\Persons\Domain\Repository\PersonRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
 
@@ -70,10 +71,13 @@ class PersonRepositoryTest extends UnitTestCase
      * @test
      */
     public function findMultipleByUidCreatesAndExecutesQuery() {
+        $querySettings = $this->getMockBuilder(QuerySettingsInterface::class)->getMockForAbstractClass();
+        $querySettings->expects($this->once())->method('setRespectSysLanguage')->with(false)->willReturn($querySettings);
         $mockQuery = $this->getMockBuilder(QueryInterface::class)
-            ->setMethods(['execute'])->getMockForAbstractClass();
+            ->setMethods(['execute', 'getQuerySettings'])->getMockForAbstractClass();
         $this->subject->expects($this->once())->method('createQuery')
             ->will($this->returnValue($mockQuery));
+        $mockQuery->expects($this->once())->method('getQuerySettings')->willReturn($querySettings);
         $mockQuery->expects($this->once())->method('execute');
 
         $this->subject->findMultipleByUid('');
@@ -86,10 +90,14 @@ class PersonRepositoryTest extends UnitTestCase
         $recordList = '3,5,1';
         $recordItems = GeneralUtility::trimExplode(',', $recordList, true);
 
+        $querySettings = $this->getMockBuilder(QuerySettingsInterface::class)->getMockForAbstractClass();
+        $querySettings->expects($this->once())->method('setRespectSysLanguage')->with(false)->willReturn($querySettings);
         $mockQuery = $this->getMockBuilder(QueryInterface::class)
-            ->setMethods(['execute', 'in', 'matching'])->getMockForAbstractClass();
+            ->setMethods(['execute', 'getQuerySettings', 'in', 'matching'])->getMockForAbstractClass();
         $this->subject->expects($this->once())->method('createQuery')
             ->will($this->returnValue($mockQuery));
+
+        $mockQuery->expects($this->once())->method('getQuerySettings')->willReturn($querySettings);
 
         $mockQuery->expects($this->once())
             ->method('in')
@@ -111,10 +119,14 @@ class PersonRepositoryTest extends UnitTestCase
         $orderList = 'foo';
         $orderings = ['foo' => QueryInterface::ORDER_ASCENDING];
 
+        $querySettings = $this->getMockBuilder(QuerySettingsInterface::class)->getMockForAbstractClass();
+        $querySettings->expects($this->once())->method('setRespectSysLanguage')->with(false)->willReturn($querySettings);
         $mockQuery = $this->getMockBuilder(QueryInterface::class)
-            ->setMethods(['execute', 'in', 'matching', 'setOrderings'])->getMockForAbstractClass();
+            ->setMethods(['execute', 'getQuerySettings', 'in', 'matching', 'setOrderings'])->getMockForAbstractClass();
         $this->subject->expects($this->once())->method('createQuery')
             ->will($this->returnValue($mockQuery));
+
+        $mockQuery->expects($this->once())->method('getQuerySettings')->willReturn($querySettings);
 
         $mockQuery->expects($this->once())
             ->method('in')
