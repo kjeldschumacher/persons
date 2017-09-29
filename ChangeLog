@@ -1,3 +1,7 @@
+2017-09-29         [RELEASE] Release of persons 0.5.0 (Dirk Wenzel)
+2017-09-29 62c00f5 [TASK] cast to bool replaced by !empty() in PersonRepository->findMultipleByUid (Dirk Wenzel)
+2017-09-26 83b4352 [BUGFIX] Allow persons with default language in showSelectedAction (Nicole Cordes)
+
 2017-09-26         [RELEASE] Release of persons 0.4.1 (Dirk Wenzel)
 2017-09-26 46cf6d6 [BUGFIX] fixed error in AbstractJsonView caused by invalid return value null of TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy->_loadRealInstance() (Dirk Wenzel)
 
