@@ -84,4 +84,18 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         );
         $this->view->assignMultiple($templateVariables);
     }
+    
+    /**
+     * Assign content element and page data to all views.
+     *
+     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
+     */
+    protected function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
+    {
+        $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        if (is_object($GLOBALS['TSFE'])) {
+            $view->assign('pageData', $GLOBALS['TSFE']->page);
+        }
+        parent::initializeView($view);
+    }
 }
